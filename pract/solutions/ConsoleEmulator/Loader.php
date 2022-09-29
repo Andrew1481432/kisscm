@@ -1,13 +1,14 @@
 <?php
-
-/*
+/**
 ДЗ №1. Эмулятор командной строки
 Разработать эмулятор командной строки vshell. В качестве аргумента vshell принимает образ файловой системы известного формата (tar, zip).
 
 Обратите внимание: программа должна запускаться прямо из командной строки, а файл с виртуальной файловой системой не нужно распаковывать у пользователя.
 В vshell должны поддерживаться команды pwd, ls, cd и cat. Ваша задача сделать работу vshell как можно более похожей на сеанс bash в Linux. Реализовать vshell
 можно на Python или других ЯП, но кроссплатформенным образом.
-*/
+
+@author testerdev
+ **/
 
 if(!function_exists("readline")) {
     function readline($prompt = null){
@@ -63,7 +64,6 @@ final Class Loader {
             $nameFile = implode("/", $dirArray);
             if($curDir != "") {
                 $cutNameFile = substr($nameFile, 0, mb_strlen($curDir));
-                //var_dump([$cutNameFile, $curDir]);
                 if(str_replace("/", "", $curDir) != str_replace("/", "", $cutNameFile)) {
                     continue;
                 }
@@ -82,9 +82,9 @@ final Class Loader {
             if(substr($nameFile, 0, 1) == "." or substr($nameFile, 0, 1) == "") { //скипаем временные файлы
                 continue;
             }
-           if($arrData["size"] == 0) {
-               $catalogs[] = $nameFile;
-           }
+            if($arrData["size"] == 0) {
+                $catalogs[] = $nameFile;
+            }
         }
         return $catalogs;
     }
@@ -114,7 +114,6 @@ final Class Loader {
             $nameFile = implode("/", $dirArray);
             if($curDir != "") {
                 $cutNameFile = substr($nameFile, 0, mb_strlen($curDir));
-                //var_dump([$cutNameFile, $curDir]);
                 if(str_replace("/", "", $curDir) != str_replace("/", "", $cutNameFile)) {
                     continue;
                 }
@@ -172,7 +171,7 @@ final Class Loader {
                     if($curDir == "") {
                         println("/");
                     } else {
-                        println("/" . $curDir);
+                        println($curDir);
                     }
                     break;
 
@@ -217,7 +216,7 @@ final Class Loader {
                     break;
 
                 default:
-                   echo $arrInput[0].": command not found".PHP_EOL;
+                    echo $arrInput[0].": command not found".PHP_EOL;
             }
         }
     }
