@@ -8,7 +8,7 @@
 можно на Python или других ЯП, но кроссплатформенным образом.
 
 @author testerdev
- **/
+**/
 
 if(!function_exists("readline")) {
     function readline($prompt = null){
@@ -32,7 +32,7 @@ final Class Loader {
     /** @var ZipArchive */
     private static $zip = "";
 
-    private function __destruct(){
+    private function __construct(){
         // NOOP
     }
 
@@ -82,9 +82,9 @@ final Class Loader {
             if(substr($nameFile, 0, 1) == "." or substr($nameFile, 0, 1) == "") { //скипаем временные файлы
                 continue;
             }
-            if($arrData["size"] == 0) {
-                $catalogs[] = $nameFile;
-            }
+           if($arrData["size"] == 0) {
+               $catalogs[] = $nameFile;
+           }
         }
         return $catalogs;
     }
@@ -216,7 +216,7 @@ final Class Loader {
                     break;
 
                 default:
-                    echo $arrInput[0].": command not found".PHP_EOL;
+                   echo $arrInput[0].": command not found".PHP_EOL;
             }
         }
     }
